@@ -2,8 +2,8 @@ import React from 'react';
 
 const FooterSection = () => {
     const navigation = [
-        { name: 'Facebook',src:'/Facebook.png', href: '#' },
-        { name: 'Instagram', src:'/Instagram.png', href: '#' },
+        { name: 'Facebook',src:'/Facebook.png', href: 'https://www.facebook.com/DigiView36' },
+        { name: 'Instagram', src:'/Instagram.png', href: 'https://www.instagram.com/digiview360/' },
         { name: 'Linkedin', src:'/LinkedIn.png', href: '#' },
         { name: 'WhattsApp', src:'/WhattsApp.png', href: '#' },
 
