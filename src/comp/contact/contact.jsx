@@ -1,6 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    details: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Send email using EmailJS
+    emailjs
+      .sendForm('service_t24tlbg', 'template_m0ljbyg', e.target, 'hiten')
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+        },
+        (error) => {
+          console.error('Error sending email:', error.text);
+        }
+      );
+  };
   return (
     <>
       <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
@@ -122,27 +152,34 @@ const Contact = () => {
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <ContactInputBox
                     type="text"
                     name="name"
                     placeholder="Your Name"
+                    onChange={handleChange}
+                    value={formData.name}
                   />
                   <ContactInputBox
                     type="text"
                     name="email"
                     placeholder="Your Email"
+                    onChange={handleChange}
+                    value={formData.email}
                   />
                   <ContactInputBox
                     type="text"
                     name="phone"
                     placeholder="Your Phone"
+                    onChange={handleChange}
+                    value={formData.phone}
                   />
                   <ContactTextArea
                     row="6"
                     placeholder="Your Message"
                     name="details"
-                    defaultValue=""
+                    defaultValue={formData.details}
+                    onChange={handleChange}
                   />
                   <div>
                     <button
@@ -972,7 +1009,7 @@ const Contact = () => {
 
 export default Contact;
 
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
+const ContactTextArea = ({ row, placeholder, name, defaultValue,onChange  }) => {
   return (
     <>
       <div className="mb-6">
@@ -982,13 +1019,14 @@ const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
           name={name}
           className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
           defaultValue={defaultValue}
+          onChange ={onChange }
         />
       </div>
     </>
   );
 };
 
-const ContactInputBox = ({ type, placeholder, name }) => {
+const ContactInputBox = ({ type, placeholder, name ,value, onChange}) => {
   return (
     <>
       <div className="mb-6">
@@ -996,6 +1034,8 @@ const ContactInputBox = ({ type, placeholder, name }) => {
           type={type}
           placeholder={placeholder}
           name={name}
+          value={value}
+          onChange={onChange}
           className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
         />
       </div>
