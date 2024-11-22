@@ -21,7 +21,7 @@ const Contact = () => {
 
     // Send email using EmailJS
     emailjs
-      .sendForm('service_t24tlbg', '__ejs-test-mail-service__', e.target, 'NsuM6dOQOQbEdH9Rr')
+      .sendForm('service_t24tlbg', 'template_m0ljbyg', e.target, 'NsuM6dOQOQbEdH9Rr')
       .then(
         (result) => {
           console.log('Email sent successfully:', result.text);
