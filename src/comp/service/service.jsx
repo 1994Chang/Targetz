@@ -40,7 +40,7 @@ const Service = () => {
             title="Social Media Marketing"
             details="Crafting impactful strategies to connect brands with audiences, fostering trust, engagement, and growth through quality-driven campaigns."
             icon={ 
-                <img src="/social.png" alt="Icon" width="52" height="52" />
+                <img src="/social.png" alt="Icon" width="120" height="120" />
                 
             //   <svg
             //     width="36"
