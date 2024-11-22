@@ -1,11 +1,10 @@
 import React from 'react';
-import facebook from '../../Asset/Facebook.png';
 
 const FooterSection = () => {
     const navigation = [
         { name: 'Facebook',src:'/Facebook.png', href: '#' },
         { name: 'Instagram', src:'/Instagram.png', href: '#' },
-        { name: 'Linkedin', src:'/Linkedin.png', href: '#' },
+        { name: 'Linkedin', src:'/LinkedIn.png', href: '#' },
         { name: 'WhattsApp', src:'/WhattsApp.png', href: '#' },
 
       ]
